@@ -3,8 +3,8 @@ const translations = {
     download_eyebrow: "Dossier del projecte",
     download_title: "Vols veure el programa complet?",
     download_text: "Descarrega el dossier d’Itinera amb la informació completa sobre objectius, metodologia, modalitats, ubicacions i equip impulsor.",
-    download_cat: "Descarregar dossier CAT",
-    download_cast: "Descarregar dossier CAST",
+    download_cat: "Descarregar dossier",
+    download_cast: "Descarregar dossier",
     nav_program: "Programa",
     nav_method: "Metodologia",
     nav_formats: "Modalitats",
@@ -149,6 +149,7 @@ const languageButtons = document.querySelectorAll(".lang-btn");
 const translatableElements = document.querySelectorAll("[data-i18n]");
 const navToggle = document.querySelector(".nav-toggle");
 const mainNav = document.querySelector(".main-nav");
+const dossierDownload = document.getElementById("download-dossier");
 
 function setLanguage(lang) {
   const dictionary = translations[lang] || translations.ca;
@@ -163,6 +164,16 @@ function setLanguage(lang) {
   languageButtons.forEach((button) => {
     button.classList.toggle("active", button.dataset.lang === lang);
   });
+
+  if (dossierDownload) {
+    if (lang === "es") {
+      dossierDownload.href = "assets/docs/ITINERA_DOSSIER_CAST.pdf";
+      dossierDownload.setAttribute("download", "ITINERA_DOSSIER_CAST.pdf");
+    } else {
+      dossierDownload.href = "assets/docs/ITINERA_DOSSIER_CAT.pdf";
+      dossierDownload.setAttribute("download", "ITINERA_DOSSIER_CAT.pdf");
+    }
+  }
 
   document.documentElement.lang = lang;
   localStorage.setItem("itinera-language", lang);
