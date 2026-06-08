@@ -770,3 +770,22 @@ cite {
     width: 100%;
   }
 }
+
+.brand-logo {
+  width: 44px;
+  height: 44px;
+  object-fit: contain;
+  display: block;
+}
+
+.team-link {
+  display: inline-flex;
+  margin-top: 20px;
+  font-weight: 900;
+  color: var(--color-dark);
+  border-bottom: 2px solid var(--color-brand);
+}
+
+.team-link:hover {
+  opacity: 0.68;
+}

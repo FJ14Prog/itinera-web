@@ -3,8 +3,7 @@ const translations = {
     download_eyebrow: "Dossier del projecte",
     download_title: "Vols veure el programa complet?",
     download_text: "Descarrega el dossier d’Itinera amb la informació completa sobre objectius, metodologia, modalitats, ubicacions i equip impulsor.",
-    download_cat: "Descarregar dossier",
-    download_cast: "Descarregar dossier",
+    download_button: "Descarregar dossier",
     nav_program: "Programa",
     nav_method: "Metodologia",
     nav_formats: "Modalitats",
@@ -60,6 +59,7 @@ const translations = {
     team_title: "Acompanyament amb mirada pedagògica, comunicativa i vivencial.",
     team_carolina: "Cofundadora d’Itinera. Sociòloga, llicenciada en Art Dramàtic i Màster en Psicopedagogia. Docent universitària i especialista en habilitats professionals, metodologies creatives i acompanyament socioeducatiu.",
     team_anna: "Cofundadora d’Itinera. Directora de projectes, docent universitària i professional de la comunicació, la producció audiovisual i el lideratge d’equips. Aporta rigor, mirada pràctica i experiència en mentoria.",
+    team_anna_link: "Veure perfil professional",
     testimonials_eyebrow: "Testimonis",
     testimonials_title: "Què opinen qui ens coneix.",
     testimonial_1: "“A Itinera he trobat un lloc on puc ser jo mateixa de veritat: parlar, fer broma i expressar-me sense por ni crítiques.”",
@@ -75,8 +75,7 @@ const translations = {
     download_eyebrow: "Dossier del proyecto",
     download_title: "¿Quieres ver el programa completo?",
     download_text: "Descarga el dossier de Itinera con la información completa sobre objetivos, metodología, modalidades, ubicaciones y equipo impulsor.",
-    download_cat: "Descargar dossier CAT",
-    download_cast: "Descargar dossier CAST",
+    download_button: "Descargar dossier",
     nav_program: "Programa",
     nav_method: "Metodología",
     nav_formats: "Modalidades",
@@ -132,6 +131,7 @@ const translations = {
     team_title: "Acompañamiento con mirada pedagógica, comunicativa y vivencial.",
     team_carolina: "Cofundadora de Itinera. Socióloga, licenciada en Arte Dramático y Máster en Psicopedagogía. Docente universitaria y especialista en habilidades profesionales, metodologías creativas y acompañamiento socioeducativo.",
     team_anna: "Cofundadora de Itinera. Directora de proyectos, docente universitaria y profesional de la comunicación, la producción audiovisual y el liderazgo de equipos. Aporta rigor, mirada práctica y experiencia en mentoría.",
+    team_anna_link: "Ver perfil profesional",
     testimonials_eyebrow: "Testimonios",
     testimonials_title: "Qué opinan quienes nos conocen.",
     testimonial_1: "“En Itinera he encontrado un lugar donde puedo ser yo misma de verdad: hablar, bromear y expresarme sin miedo ni críticas.”",
@@ -150,6 +150,7 @@ const translatableElements = document.querySelectorAll("[data-i18n]");
 const navToggle = document.querySelector(".nav-toggle");
 const mainNav = document.querySelector(".main-nav");
 const dossierDownload = document.getElementById("download-dossier");
+const annaProfileLink = document.getElementById("anna-profile-link");
 
 function setLanguage(lang) {
   const dictionary = translations[lang] || translations.ca;
@@ -172,6 +173,14 @@ function setLanguage(lang) {
     } else {
       dossierDownload.href = "assets/docs/ITINERA_DOSSIER_CAT.pdf";
       dossierDownload.setAttribute("download", "ITINERA_DOSSIER_CAT.pdf");
+    }
+  }
+
+  if (annaProfileLink) {
+    if (lang === "es") {
+      annaProfileLink.href = "https://fj14prog.github.io/portfolio-anna-llacher/es.html";
+    } else {
+      annaProfileLink.href = "https://fj14prog.github.io/portfolio-anna-llacher/";
     }
   }
 
