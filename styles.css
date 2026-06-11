@@ -1,18 +1,23 @@
 :root {
   /* Base cromàtica */
-  --color-bg: #80b9af;
+  --color-bg: #8abbb1;
   --color-surface: #f6faf8;
   --color-surface-soft: #e6f2ef;
 
   /* Marca */
-  --color-brand: #80b9af;
+  --color-brand: #8abbb1;
+  --color-brand-mint: #c4ddd9;
+  --color-brand-sage: #80a077;
+  --color-brand-sage-soft: #c2cebd;
+  --color-brand-blue: #acc9d1;
+  --color-brand-blue-soft: #d8e4e7;
   --color-brand-light: #a8d0c9;
   --color-brand-soft: #e6f2ef;
   --color-brand-dark: #4f948a;
 
   /* Contrast */
-  --color-dark: #071311;
-  --color-dark-soft: #18312e;
+  --color-dark: #10231f;
+  --color-dark-soft: #29433e;
   --color-black: #000000;
 
   /* Textos secundaris */
@@ -97,8 +102,8 @@ img {
   display: grid;
   place-items: center;
   border-radius: 50%;
-  background: var(--color-dark);
-  color: var(--color-brand);
+  background: var(--color-brand-sage);
+  color: #ffffff;
   font-weight: 900;
   letter-spacing: -0.04em;
 }
@@ -132,6 +137,18 @@ img {
   color: var(--color-dark);
 }
 
+.main-nav a:nth-of-type(2) {
+  color: var(--color-brand-dark);
+}
+
+.main-nav a:nth-of-type(3) {
+  color: #5f8058;
+}
+
+.main-nav a:nth-of-type(4) {
+  color: #5d8490;
+}
+
 .main-nav a:hover {
   opacity: 0.68;
 }
@@ -143,7 +160,8 @@ img {
 }
 
 .nav-cta:hover {
-  background: var(--color-dark);
+  background: var(--color-brand-sage);
+  border-color: var(--color-brand-sage);
   color: #ffffff;
   opacity: 1;
 }
@@ -201,16 +219,16 @@ img {
 }
 
 .dark-section {
-  background: var(--color-dark);
-  color: #ffffff;
+  background: var(--color-brand-sage);
+  color: var(--color-dark);
 }
 
 .dark-section .eyebrow {
-  color: var(--color-brand);
+  color: #ffffff;
 }
 
 .dark-section p {
-  color: rgba(255, 255, 255, 0.76);
+  color: rgba(16, 35, 31, 0.78);
 }
 
 /* ==============================
@@ -294,7 +312,7 @@ h2 {
 
 .dark-section h2,
 .dark-section h3 {
-  color: #ffffff;
+  color: var(--color-dark);
 }
 
 h3 {
@@ -356,8 +374,8 @@ h3 {
 }
 
 .btn-primary:hover {
-  background: var(--color-black);
-  border-color: var(--color-black);
+  background: var(--color-brand-dark);
+  border-color: var(--color-brand-dark);
 }
 
 .btn-secondary {
@@ -406,7 +424,7 @@ blockquote {
 
 .hero-card {
   padding: clamp(28px, 4vw, 44px);
-  transform: rotate(1.2deg);
+  transform: none;
   backdrop-filter: blur(8px);
 }
 
@@ -415,7 +433,7 @@ blockquote {
   margin-bottom: 22px;
   padding: 8px 12px;
   border-radius: 999px;
-  background: var(--color-dark);
+  background: var(--color-brand-sage);
   color: #ffffff;
   font-weight: 900;
   font-size: 0.8rem;
@@ -478,9 +496,9 @@ blockquote p,
   margin: 3rem auto 0;
   padding: clamp(1.5rem, 4vw, 2.2rem);
   border-radius: var(--radius-lg);
-  background: var(--color-dark);
-  color: #ffffff;
-  border: 1px solid rgba(255, 255, 255, 0.14);
+  background: var(--color-brand-sage-soft);
+  color: var(--color-dark);
+  border: 1px solid rgba(16, 35, 31, 0.12);
   box-shadow: var(--shadow);
   display: flex;
   align-items: center;
@@ -489,13 +507,13 @@ blockquote p,
 }
 
 .download-card .eyebrow {
-  color: var(--color-brand);
+  color: var(--color-brand-dark);
 }
 
 .download-card h3 {
   margin: 0.35rem 0 0.75rem;
   font-size: clamp(1.4rem, 2vw, 1.9rem);
-  color: #ffffff;
+  color: var(--color-dark);
 }
 
 .download-card p {
@@ -504,7 +522,7 @@ blockquote p,
 
 .download-card > div:first-child p:last-child {
   max-width: 680px;
-  color: rgba(255, 255, 255, 0.72);
+  color: var(--color-dark-soft);
   line-height: 1.6;
 }
 
@@ -521,23 +539,23 @@ blockquote p,
 }
 
 .download-actions .btn-primary {
-  background: #ffffff;
-  color: var(--color-dark);
-  border-color: #ffffff;
+  background: var(--color-dark);
+  color: #ffffff;
+  border-color: var(--color-dark);
 }
 
 .download-actions .btn-primary:hover {
-  background: var(--color-brand);
-  border-color: var(--color-brand);
+  background: var(--color-brand-dark);
+  border-color: var(--color-brand-dark);
 }
 
 .download-actions .btn-secondary {
-  color: #ffffff;
-  border-color: rgba(255, 255, 255, 0.72);
+  color: var(--color-dark);
+  border-color: rgba(16, 35, 31, 0.42);
 }
 
 .download-actions .btn-secondary:hover {
-  background: rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.42);
 }
 
 /* ==============================
@@ -545,7 +563,7 @@ blockquote p,
    ============================== */
 
 .outcomes {
-  background: var(--color-brand-soft);
+  background: var(--color-brand-blue-soft);
 }
 
 .split {
@@ -575,17 +593,17 @@ blockquote p,
 
 .method-card {
   padding: 28px;
-  border: 1px solid rgba(255, 255, 255, 0.16);
+  border: 1px solid rgba(16, 35, 31, 0.14);
   border-radius: var(--radius-lg);
-  background: rgba(255, 255, 255, 0.06);
+  background: rgba(255, 255, 255, 0.34);
 }
 
 .method-card h3 {
-  color: #ffffff;
+  color: var(--color-dark);
 }
 
 .method-card p {
-  color: rgba(255, 255, 255, 0.72);
+  color: rgba(16, 35, 31, 0.74);
 }
 
 /* ==============================
@@ -598,7 +616,7 @@ blockquote p,
 }
 
 .format-card:hover {
-  background: var(--color-brand-soft);
+  background: var(--color-brand-mint);
 }
 
 /* ==============================
@@ -622,8 +640,8 @@ blockquote p,
   place-items: center;
   margin-bottom: 24px;
   border-radius: 50%;
-  background: var(--color-dark);
-  color: var(--color-brand);
+  background: var(--color-brand-sage);
+  color: #ffffff;
   font-weight: 900;
 }
 
@@ -649,7 +667,7 @@ cite {
    ============================== */
 
 .contact-section {
-  background: var(--color-dark);
+  background: var(--color-brand-blue-soft);
 }
 
 .contact-card {
