@@ -145,29 +145,108 @@ const translations = {
   }
 };
 
+const pageSettings = {
+  ca: {
+    title: "Itinera | Youth Talent Development",
+    description: "Itinera és un programa d’autoconeixement, habilitats i orientació per a joves que volen decidir el futur amb criteri.",
+    ogDescription: "Itinera acompanya joves a conèixer-se millor, entrenar habilitats personals i socials, i construir un pla d’acció realista.",
+    navLabel: "Menú principal",
+    navToggleOpen: "Obrir menú",
+    navToggleClose: "Tancar menú",
+    langCaLabel: "Canviar a català",
+    langEsLabel: "Cambiar a castellano",
+    emailSubject: "Reunió informativa Itinera"
+  },
+  es: {
+    title: "Itinera | Youth Talent Development",
+    description: "Itinera es un programa de autoconocimiento, habilidades y orientación para jóvenes que quieren decidir el futuro con criterio.",
+    ogDescription: "Itinera acompaña a jóvenes a conocerse mejor, entrenar habilidades personales y sociales, y construir un plan de acción realista.",
+    navLabel: "Menú principal",
+    navToggleOpen: "Abrir menú",
+    navToggleClose: "Cerrar menú",
+    langCaLabel: "Canviar a català",
+    langEsLabel: "Cambiar a castellano",
+    emailSubject: "Reunión informativa Itinera"
+  }
+};
+
 const languageButtons = document.querySelectorAll(".lang-btn");
 const translatableElements = document.querySelectorAll("[data-i18n]");
 const navToggle = document.querySelector(".nav-toggle");
 const mainNav = document.querySelector(".main-nav");
 const dossierDownload = document.getElementById("download-dossier");
 const annaProfileLink = document.getElementById("anna-profile-link");
+const contactEmailLink = document.getElementById("contact-email-link");
+const yearElement = document.getElementById("year");
+const metaDescription = document.getElementById("meta-description");
+const ogDescription = document.getElementById("og-description");
+const siteHeader = document.querySelector(".site-header");
+let currentLanguage = "ca";
+
+function getStoredLanguage() {
+  try {
+    return localStorage.getItem("itinera-language");
+  } catch (error) {
+    return null;
+  }
+}
+
+function storeLanguage(lang) {
+  try {
+    localStorage.setItem("itinera-language", lang);
+  } catch (error) {
+    // The selected language still applies even if storage is unavailable.
+  }
+}
+
+function updateNavToggleLabel() {
+  if (!navToggle) {
+    return;
+  }
+
+  const settings = pageSettings[currentLanguage] || pageSettings.ca;
+  const isOpen = mainNav?.classList.contains("open") || false;
+  navToggle.setAttribute("aria-label", isOpen ? settings.navToggleClose : settings.navToggleOpen);
+}
+
+function setMenuOpen(isOpen) {
+  if (!mainNav || !navToggle) {
+    return;
+  }
+
+  mainNav.classList.toggle("open", isOpen);
+  navToggle.setAttribute("aria-expanded", String(isOpen));
+  updateNavToggleLabel();
+}
 
 function setLanguage(lang) {
-  const dictionary = translations[lang] || translations.ca;
+  currentLanguage = translations[lang] ? lang : "ca";
+  const dictionary = translations[currentLanguage];
+  const settings = pageSettings[currentLanguage] || pageSettings.ca;
 
   translatableElements.forEach((element) => {
     const key = element.dataset.i18n;
-    if (dictionary[key]) {
+    if (dictionary[key] !== undefined) {
       element.textContent = dictionary[key];
     }
   });
 
   languageButtons.forEach((button) => {
-    button.classList.toggle("active", button.dataset.lang === lang);
+    const isActive = button.dataset.lang === currentLanguage;
+    button.classList.toggle("active", isActive);
+    button.setAttribute("aria-pressed", String(isActive));
+
+    if (button.dataset.lang === "ca") {
+      button.setAttribute("aria-label", settings.langCaLabel);
+    }
+
+    if (button.dataset.lang === "es") {
+      button.setAttribute("aria-label", settings.langEsLabel);
+    }
   });
 
   if (dossierDownload) {
-    if (lang === "es") {
+    if (currentLanguage === "es") {
       dossierDownload.href = "assets/docs/ITINERA_DOSSIER_CAST.pdf";
       dossierDownload.setAttribute("download", "ITINERA_DOSSIER_CAST.pdf");
     } else {
@@ -177,33 +256,73 @@ function setLanguage(lang) {
   }
 
   if (annaProfileLink) {
-    if (lang === "es") {
+    if (currentLanguage === "es") {
       annaProfileLink.href = "https://fj14prog.github.io/portfolio-anna-llacher/es.html";
     } else {
       annaProfileLink.href = "https://fj14prog.github.io/portfolio-anna-llacher/";
     }
   }
 
-  document.documentElement.lang = lang;
-  localStorage.setItem("itinera-language", lang);
+  if (contactEmailLink) {
+    contactEmailLink.href = `mailto:itineratalent@itineratalent.com?subject=${encodeURIComponent(settings.emailSubject)}`;
+  }
+
+  document.documentElement.lang = currentLanguage;
+  document.title = settings.title;
+
+  if (metaDescription) {
+    metaDescription.setAttribute("content", settings.description);
+  }
+
+  if (ogDescription) {
+    ogDescription.setAttribute("content", settings.ogDescription);
+  }
+
+  if (mainNav) {
+    mainNav.setAttribute("aria-label", settings.navLabel);
+  }
+
+  updateNavToggleLabel();
+  storeLanguage(currentLanguage);
 }
 
 languageButtons.forEach((button) => {
   button.addEventListener("click", () => setLanguage(button.dataset.lang));
 });
 
-navToggle.addEventListener("click", () => {
-  const isOpen = mainNav.classList.toggle("open");
-  navToggle.setAttribute("aria-expanded", String(isOpen));
-});
-
-mainNav.querySelectorAll("a").forEach((link) => {
-  link.addEventListener("click", () => {
-    mainNav.classList.remove("open");
-    navToggle.setAttribute("aria-expanded", "false");
+if (navToggle && mainNav) {
+  navToggle.addEventListener("click", () => {
+    setMenuOpen(!mainNav.classList.contains("open"));
   });
+}
+
+if (mainNav) {
+  mainNav.querySelectorAll("a").forEach((link) => {
+    link.addEventListener("click", () => {
+      setMenuOpen(false);
+    });
+  });
+}
+
+document.addEventListener("keydown", (event) => {
+  if (event.key === "Escape" && mainNav?.classList.contains("open")) {
+    setMenuOpen(false);
+    navToggle?.focus();
+  }
 });
 
-document.getElementById("year").textContent = new Date().getFullYear();
+document.addEventListener("click", (event) => {
+  if (!siteHeader || !mainNav?.classList.contains("open")) {
+    return;
+  }
 
-setLanguage(localStorage.getItem("itinera-language") || "ca");
+  if (!siteHeader.contains(event.target)) {
+    setMenuOpen(false);
+  }
+});
+
+if (yearElement) {
+  yearElement.textContent = new Date().getFullYear();
+}
+
+setLanguage(getStoredLanguage() || "ca");
