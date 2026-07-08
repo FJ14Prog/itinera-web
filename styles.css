@@ -602,6 +602,57 @@ blockquote {
   align-self: flex-start;
 }
 
+.mentoring-card {
+  max-width: var(--max-width);
+  margin: 24px auto 0;
+  padding: clamp(26px, 4vw, 38px);
+  border: 1px solid rgba(16, 35, 31, 0.12);
+  border-radius: var(--radius-lg);
+  background: var(--color-brand-sage-soft);
+  box-shadow: var(--shadow-soft);
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 24px;
+  align-items: center;
+}
+
+.mentoring-label {
+  display: inline-flex;
+  margin-bottom: 14px;
+  padding: 8px 12px;
+  border-radius: 999px;
+  background: var(--color-brand-sage);
+  color: #ffffff;
+  font-size: 0.78rem;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+.mentoring-card h3 {
+  margin: 0;
+  color: var(--color-dark);
+  font-family: "Playfair Display", Georgia, serif;
+  font-size: clamp(1.55rem, 2.6vw, 2.35rem);
+}
+
+.mentoring-card p {
+  max-width: 680px;
+  margin: 12px 0 0;
+  color: var(--color-dark-soft);
+  font-size: 1.05rem;
+}
+
+.mentoring-actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 12px;
+}
+
+.mentoring-actions .btn {
+  white-space: nowrap;
+}
+
 .info-card,
 .format-card,
 .team-card,
@@ -940,6 +991,14 @@ cite {
     width: 100%;
     text-align: center;
   }
+
+  .mentoring-card {
+    grid-template-columns: 1fr;
+  }
+
+  .mentoring-actions {
+    justify-content: flex-start;
+  }
 }
 
 @media (max-width: 620px) {
@@ -969,6 +1028,11 @@ cite {
 
   .btn,
   .hero-promo {
+    width: 100%;
+  }
+
+  .mentoring-actions {
+    flex-direction: column;
     width: 100%;
   }
 
