@@ -645,13 +645,16 @@ blockquote {
 
 .mentoring-actions {
   display: flex;
-  flex-wrap: wrap;
-  justify-content: flex-end;
+  flex-direction: column;
+  justify-content: center;
+  align-items: stretch;
   gap: 12px;
+  min-width: 260px;
 }
 
 .mentoring-actions .btn {
   white-space: nowrap;
+  width: 100%;
 }
 
 .info-card,
@@ -999,6 +1002,7 @@ cite {
 
   .mentoring-actions {
     justify-content: flex-start;
+    min-width: 0;
   }
 }
 
@@ -1029,11 +1033,6 @@ cite {
 
   .btn,
   .hero-promo {
-    width: 100%;
-  }
-
-  .mentoring-actions {
-    flex-direction: column;
     width: 100%;
   }
 
