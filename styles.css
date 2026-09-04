@@ -835,6 +835,37 @@ blockquote p,
   color: var(--color-dark);
 }
 
+.team-intro {
+  max-width: 920px;
+  margin-top: 22px;
+  display: grid;
+  gap: 14px;
+}
+
+.team-section .section-heading .team-intro p {
+  max-width: none;
+  margin: 0;
+}
+
+.team-lead {
+  font-size: 1.12rem;
+  line-height: 1.55;
+}
+
+.team-card {
+  display: flex;
+  flex-direction: column;
+}
+
+.team-card p + p {
+  margin-top: 14px;
+}
+
+.team-role {
+  color: var(--color-dark);
+  font-weight: 900;
+}
+
 .avatar-placeholder,
 .team-photo {
   width: 76px;
@@ -1063,6 +1094,7 @@ cite {
 
 .team-link {
   display: inline-flex;
+  align-self: flex-start;
   margin-top: 20px;
   font-weight: 900;
   color: var(--color-dark);
