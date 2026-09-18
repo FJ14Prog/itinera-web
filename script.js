@@ -236,6 +236,7 @@ const navToggle = document.querySelector(".nav-toggle");
 const mainNav = document.querySelector(".main-nav");
 const dossierDownload = document.getElementById("download-dossier");
 const annaProfileLink = document.getElementById("anna-profile-link");
+const carolinaProfileLink = document.getElementById("carolina-profile-link");
 const contactEmailLink = document.getElementById("contact-email-link");
 const yearElement = document.getElementById("year");
 const metaDescription = document.getElementById("meta-description");
@@ -317,9 +318,17 @@ function setLanguage(lang) {
 
   if (annaProfileLink) {
     if (currentLanguage === "es") {
-      annaProfileLink.href = "https://fj14prog.github.io/portfolio-anna-llacher/es.html";
+      annaProfileLink.href = "https://annallacher.com/es.html";
     } else {
-      annaProfileLink.href = "https://fj14prog.github.io/portfolio-anna-llacher/";
+      annaProfileLink.href = "https://annallacher.com/";
+    }
+  }
+
+  if (carolinaProfileLink) {
+    if (currentLanguage === "es") {
+      carolinaProfileLink.href = "https://fj14prog.github.io/portfolio-carolina-llacher/es.html";
+    } else {
+      carolinaProfileLink.href = "https://fj14prog.github.io/portfolio-carolina-llacher/";
     }
   }
 
