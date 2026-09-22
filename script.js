@@ -113,7 +113,7 @@ const translations = {
     nav_team: "Quiénes somos",
     nav_contact: "Contacto",
     hero_eyebrow: "Programa para jóvenes, familias y futuro",
-    hero_title: "Autoconocimiento, habilidades y orientación para decidir el futuro con criterio.",
+    hero_title: "Autoconocimiento, habilidades y\u00A0orientación para decidir el futuro con criterio.",
     hero_lead: "Itinera acompaña a jóvenes de ESO, Bachillerato, Ciclos formativos y universidad a conocerse mejor, entrenar habilidades personales y sociales, y construir un plan de acción realista.",
     hero_cta_primary: "Solicitar reunión informativa",
     hero_cta_secondary: "Ver el programa",
@@ -242,6 +242,7 @@ const yearElement = document.getElementById("year");
 const metaDescription = document.getElementById("meta-description");
 const ogDescription = document.getElementById("og-description");
 const siteHeader = document.querySelector(".site-header");
+const backToTopButton = document.querySelector(".back-to-top");
 let currentLanguage = "ca";
 
 function getStoredLanguage() {
@@ -392,6 +393,28 @@ document.addEventListener("click", (event) => {
 
 if (yearElement) {
   yearElement.textContent = new Date().getFullYear();
+}
+
+function updateBackToTopVisibility() {
+  if (!backToTopButton) {
+    return;
+  }
+
+  backToTopButton.classList.toggle("visible", window.scrollY > 360);
+}
+
+if (backToTopButton) {
+  backToTopButton.addEventListener("click", () => {
+    const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+    window.scrollTo({
+      top: 0,
+      behavior: prefersReducedMotion ? "auto" : "smooth"
+    });
+  });
+
+  window.addEventListener("scroll", updateBackToTopVisibility, { passive: true });
+  updateBackToTopVisibility();
 }
 
 setLanguage(getStoredLanguage() || "ca");
