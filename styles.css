@@ -999,6 +999,12 @@ cite {
    ============================== */
 
 @media (max-width: 980px) {
+  .site-header {
+    position: sticky;
+    top: 0;
+    z-index: 1001;
+  }
+
   .nav-toggle {
     display: block;
   }
@@ -1063,7 +1069,7 @@ cite {
 @media (max-width: 768px) {
   html,
   body {
-    overflow-x: hidden;
+    overflow-x: clip;
   }
 
   h1,
