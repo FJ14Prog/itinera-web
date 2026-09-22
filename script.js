@@ -400,7 +400,7 @@ function updateBackToTopVisibility() {
     return;
   }
 
-  backToTopButton.classList.toggle("visible", window.scrollY > 360);
+  backToTopButton.classList.toggle("show", window.scrollY > 360);
 }
 
 if (backToTopButton) {

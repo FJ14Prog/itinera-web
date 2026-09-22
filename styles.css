@@ -958,7 +958,7 @@ cite {
   position: fixed;
   right: clamp(16px, 4vw, 32px);
   bottom: clamp(16px, 4vw, 32px);
-  z-index: 45;
+  z-index: 1000;
   display: inline-grid;
   place-items: center;
   width: 48px;
@@ -982,6 +982,7 @@ cite {
     border-color 0.2s ease;
 }
 
+.back-to-top.show,
 .back-to-top.visible {
   opacity: 1;
   pointer-events: auto;
@@ -1177,6 +1178,8 @@ cite {
   }
 
   .back-to-top {
+    right: 16px;
+    bottom: 16px;
     width: 44px;
     height: 44px;
     font-size: 1.2rem;
