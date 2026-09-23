@@ -752,6 +752,10 @@ blockquote p,
   min-width: 0;
 }
 
+.download-card > div:first-child {
+  flex: 1 1 auto;
+}
+
 .download-card .eyebrow {
   color: var(--color-brand-dark);
 }
@@ -767,7 +771,7 @@ blockquote p,
 }
 
 .download-card > div:first-child p:last-child {
-  max-width: min(920px, 100%);
+  max-width: min(980px, 100%);
   color: var(--color-dark-soft);
   line-height: 1.6;
 }
@@ -777,7 +781,8 @@ blockquote p,
   gap: 0.85rem;
   flex-wrap: wrap;
   justify-content: flex-end;
-  min-width: 280px;
+  flex: 0 0 auto;
+  min-width: 0;
 }
 
 .download-actions .btn {
