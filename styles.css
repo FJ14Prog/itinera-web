@@ -1284,6 +1284,23 @@ cite {
     margin-left: 0;
   }
 
+  .course-date-list {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+  }
+
+  .course-date-list li {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    min-height: 44px;
+    padding: 8px 10px;
+    text-align: center;
+    white-space: nowrap;
+  }
+
   .back-to-top {
     right: 16px;
     bottom: 16px;
