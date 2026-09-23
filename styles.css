@@ -376,8 +376,12 @@ h3 {
   margin-top: 20px;
   color: var(--color-muted);
   font-size: 1.08rem;
-  line-height: 1.72;
+  line-height: 1.62;
   text-wrap: pretty;
+}
+
+#programa .section-heading p:not(.eyebrow) {
+  max-width: var(--max-width);
 }
 
 .narrow {
@@ -756,7 +760,7 @@ blockquote p,
 }
 
 .download-card > div:first-child p:last-child {
-  max-width: 680px;
+  max-width: min(860px, 100%);
   color: var(--color-dark-soft);
   line-height: 1.6;
 }
@@ -870,7 +874,7 @@ blockquote p,
 }
 
 .team-intro {
-  max-width: 1000px;
+  max-width: var(--max-width);
   margin-top: 22px;
   display: grid;
   gap: 14px;
@@ -882,9 +886,11 @@ blockquote p,
   margin: 0;
 }
 
-.team-section .section-heading .team-lead {
-  font-size: 1.12rem;
+.team-section .section-heading .team-intro .team-lead {
+  max-width: var(--max-width);
+  font-size: 1rem;
   line-height: 1.65;
+  text-wrap: normal;
 }
 
 .team-card {
@@ -1132,7 +1138,7 @@ cite {
   .mentoring-card p,
   .contact-card p:not(.eyebrow) {
     font-size: 1.04rem;
-    line-height: 1.74;
+    line-height: 1.64;
   }
 
   .info-card p,
@@ -1316,7 +1322,7 @@ cite {
   blockquote p,
   .method-card p,
   .outcome-list p {
-    line-height: 1.7;
+    line-height: 1.64;
   }
 
   .main-nav {
