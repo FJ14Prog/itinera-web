@@ -601,7 +601,7 @@ blockquote {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  min-width: 128px;
+  width: 112px;
   padding: 8px 11px;
   border: 1px solid rgba(16, 35, 31, 0.14);
   border-radius: 999px;
