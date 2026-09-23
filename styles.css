@@ -598,12 +598,19 @@ blockquote {
 }
 
 .course-date-list li {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 128px;
   padding: 8px 11px;
   border: 1px solid rgba(16, 35, 31, 0.14);
   border-radius: 999px;
   background: rgba(255, 255, 255, 0.72);
   color: var(--color-dark);
   font-weight: 900;
+  font-variant-numeric: tabular-nums;
+  text-align: center;
+  white-space: nowrap;
 }
 
 .course-contact {
